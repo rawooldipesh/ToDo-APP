@@ -4,7 +4,9 @@ function TaskList({ tasks, onEdit, onDelete, onToggleComplete }) {
   if (tasks.length === 0) {
     return (
       <div className="empty-state">
-        <p>No tasks yet. Create your first task!</p>
+        <div className="empty-state-icon">📭</div>
+        <p>No tasks yet. Let's create your first one!</p>
+        <p className="empty-state-hint">Click the "Add New Task" button above to get started</p>
       </div>
     );
   }
@@ -56,7 +58,9 @@ function TaskList({ tasks, onEdit, onDelete, onToggleComplete }) {
                 {task.status === 'completed' ? '✓ Completed' : '○ Pending'}
               </span>
               {task.reminderSent && task.status === 'pending' && (
-                <span className="reminder-badge">📧 Reminder sent</span>
+                <span className="reminder-badge" title="Email reminder was sent 30 minutes before due time">
+                  ✅ Reminder sent
+                </span>
               )}
             </div>
           </div>

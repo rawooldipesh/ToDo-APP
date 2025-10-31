@@ -45,19 +45,23 @@ function Login({ setAuth }) {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h1>Login</h1>
-        {error && <div className="error-message">{error}</div>}
+        <h1>Welcome Back! 👋</h1>
+        <p className="subtitle">Login to manage your tasks</p>
+        
+        {error && <div className="error-message">❌ {error}</div>}
         
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Email</label>
+            <label>Email Address</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              placeholder="you@example.com"
               required
               disabled={loading}
+              autoComplete="email"
             />
           </div>
 
@@ -68,19 +72,26 @@ function Login({ setAuth }) {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              placeholder="Enter your password"
               required
               disabled={loading}
+              autoComplete="current-password"
             />
           </div>
 
           <button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? '🔄 Logging in...' : '🚀 Login'}
           </button>
         </form>
 
         <p className="auth-link">
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Create one here</Link>
         </p>
+        
+        <div className="features">
+          <span className="feature-badge">✅ Secure Login</span>
+          <span className="feature-badge">📧 Email Reminders</span>
+        </div>
       </div>
     </div>
   );

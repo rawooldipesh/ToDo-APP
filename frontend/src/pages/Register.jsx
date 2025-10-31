@@ -65,31 +65,37 @@ function Register({ setAuth }) {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h1>Register</h1>
-        {error && <div className="error-message">{error}</div>}
+        <h1>Create Account 🎉</h1>
+        <p className="subtitle">Join us to start managing your tasks</p>
+        
+        {error && <div className="error-message">❌ {error}</div>}
         
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Name</label>
+            <label>Full Name</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
+              placeholder="John Doe"
               required
               disabled={loading}
+              autoComplete="name"
             />
           </div>
 
           <div className="form-group">
-            <label>Email</label>
+            <label>Email Address</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              placeholder="you@example.com"
               required
               disabled={loading}
+              autoComplete="email"
             />
           </div>
 
@@ -100,8 +106,10 @@ function Register({ setAuth }) {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              placeholder="At least 6 characters"
               required
               disabled={loading}
+              autoComplete="new-password"
             />
           </div>
 
@@ -112,19 +120,27 @@ function Register({ setAuth }) {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
+              placeholder="Re-enter your password"
               required
               disabled={loading}
+              autoComplete="new-password"
             />
           </div>
 
           <button type="submit" disabled={loading}>
-            {loading ? 'Creating account...' : 'Register'}
+            {loading ? '🔄 Creating account...' : '✨ Create Account'}
           </button>
         </form>
 
         <p className="auth-link">
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login">Login here</Link>
         </p>
+        
+        <div className="features">
+          <span className="feature-badge">🔒 Secure</span>
+          <span className="feature-badge">📧 Free Reminders</span>
+          <span className="feature-badge">⚡ Instant Setup</span>
+        </div>
       </div>
     </div>
   );
